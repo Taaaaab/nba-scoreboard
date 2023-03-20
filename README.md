@@ -1,6 +1,6 @@
 # nba-scoreboard
 
-React app to display NBA scoreboard data. Project to practice using Node with Express backend to serve data to frontend React app.
+React app to display most recent NBA scoreboard data. Project to practice using Node with Express backend to serve NBA league data API to frontend React app. Display includes game score, game status, team names, team records and player statistics for game leaders.
 
 ## Deployed site on Render
 

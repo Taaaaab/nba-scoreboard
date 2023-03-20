@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
@@ -18,15 +19,18 @@ function App() {
         flexDirection: "column",
         alignItems: "center",
         gap: "2rem",
+        padding: "1rem",
         margin: "0 auto",
         backgroundColor: "rgb(246, 246, 246)",
+        width: "100vw",
       }}
     >
       <h1>Today's Games</h1>
       <div
+        className="grid-container"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(550px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(370px, 1fr))",
           gap: "1rem",
         }}
       >
@@ -36,13 +40,22 @@ function App() {
           backendData.games.map((game, i) => (
             <div
               key={i}
+              className="card"
               style={{
                 display: "flex",
                 backgroundColor: "rgb(255, 255, 255)",
                 borderRadius: ".5rem",
               }}
             >
-              <div style={{ padding: "2rem" }}>
+              <div
+                style={{
+                  paddingTop: "1rem",
+                  paddingBottom: "1rem",
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                }}
+              >
                 <div
                   style={{
                     display: "flex",
@@ -107,8 +120,8 @@ function App() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "1rem",
-                  width: "100%",
+                  padding: "10px",
+                  width: "95%",
                 }}
               >
                 <div
