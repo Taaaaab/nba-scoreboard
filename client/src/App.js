@@ -12,31 +12,196 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Games</h1>
-      {typeof backendData.games === "undefined" ? (
-        <p>Loading...</p>
-      ) : (
-        backendData.games.map((game, i) => (
-          <div key={i}>
-            <h3>
-              {game.awayTeam.score}
-              &nbsp;
-              {game.homeTeam.score}
-            </h3>
-            {game.awayTeam.teamName} at {game.homeTeam.teamName}
-            <p>
-              {game.awayTeam.wins}-{game.awayTeam.losses}
-              &nbsp;
-              {game.homeTeam.wins}-{game.homeTeam.losses}
-            </p>
-            <h4 style={{ textTransform: "uppercase", fontWeight: "bold" }}>
-              game leaders
-            </h4>
-            <h5>{game.gameLeaders.awayLeaders.name}</h5>
-          </div>
-        ))
-      )}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "2rem",
+        margin: "0 auto",
+        backgroundColor: "rgb(246, 246, 246)",
+      }}
+    >
+      <h1>Today's Games</h1>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(550px, 1fr))",
+          gap: "1rem",
+        }}
+      >
+        {typeof backendData.games === "undefined" ? (
+          <p>Loading...</p>
+        ) : (
+          backendData.games.map((game, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                backgroundColor: "rgb(255, 255, 255)",
+                borderRadius: ".5rem",
+              }}
+            >
+              <div style={{ padding: "2rem" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        marginBottom: "5px",
+                      }}
+                    >
+                      {game.awayTeam.score}
+                    </span>
+                    <span>{game.awayTeam.teamName}</span>
+                    <span>
+                      {game.awayTeam.wins}-{game.awayTeam.losses}
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      alignSelf: "center",
+                      marginLeft: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  >
+                    {game.gameStatusText}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        marginBottom: "5px",
+                      }}
+                    >
+                      {game.homeTeam.score}
+                    </span>
+                    <span>{game.homeTeam.teamName}</span>
+                    <span>
+                      {game.homeTeam.wins}-{game.homeTeam.losses}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: "1rem",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    marginBottom: "1rem",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div
+                    style={{ textTransform: "uppercase", fontWeight: "bold" }}
+                  >
+                    game leaders
+                  </div>
+                  <div style={{ marginLeft: "1rem" }}>PTS REB AST</div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderTop: "solid 2px #eee",
+                    paddingTop: "5px",
+                    marginBottom: "5px",
+                  }}
+                >
+                  <div>
+                    <span style={{ fontSize: "1rem" }}>
+                      {game.gameLeaders.awayLeaders.name}
+                    </span>
+                    <div>
+                      <small>
+                        {game.gameLeaders.awayLeaders.teamTricode} |{" "}
+                      </small>
+                      <small>
+                        #{game.gameLeaders.awayLeaders.jerseyNum} |{" "}
+                      </small>
+                      <small>{game.gameLeaders.awayLeaders.position}</small>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "auto auto auto",
+                      gap: "1rem",
+                    }}
+                  >
+                    <span>{game.gameLeaders.awayLeaders.points}</span>
+                    <span>{game.gameLeaders.awayLeaders.rebounds}</span>
+                    <span>{game.gameLeaders.awayLeaders.assists}</span>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderTop: "solid 2px #eee",
+                    paddingTop: "5px",
+                  }}
+                >
+                  <div>
+                    <span style={{ fontSize: "1rem" }}>
+                      {game.gameLeaders.homeLeaders.name}
+                    </span>
+                    <div>
+                      <small>
+                        {game.gameLeaders.homeLeaders.teamTricode} |{" "}
+                      </small>
+                      <small>
+                        #{game.gameLeaders.homeLeaders.jerseyNum} |{" "}
+                      </small>
+                      <small>{game.gameLeaders.homeLeaders.position}</small>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "auto auto auto",
+                      gap: "1rem",
+                    }}
+                  >
+                    <span>{game.gameLeaders.homeLeaders.points}</span>
+                    <span>{game.gameLeaders.homeLeaders.rebounds}</span>
+                    <span>{game.gameLeaders.homeLeaders.assists}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
