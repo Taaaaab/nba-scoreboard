@@ -10,4 +10,6 @@ https://nba-scoreboard.onrender.com/
 
 The project is licensed under the ISC license.
 
+## Screenshot
+
 ![Alt text](https://github.com/Taaaaab/personal-portfolio/blob/main/photos/scoreboard.png?raw=true "Screenshot")
