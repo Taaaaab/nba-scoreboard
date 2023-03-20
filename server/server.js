@@ -1,9 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+var compression = require("compression");
 
 const app = express();
 
 app.use(cors());
+app.use(compression());
+
+app.use(express.static("build"));
 
 app.get("/api", (req, res) => {
   async function populate() {
