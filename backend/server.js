@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(compression());
 
-app.use(express.static("build"));
+app.use(express.static("dist"));
 
 app.get("/api", (req, res) => {
   async function populate() {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import { Scoreboard, Game } from "./DataInterface";
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
+  const [backendData, setBackendData] = useState<Scoreboard>();
 
   useEffect(() => {
     fetch("/api")
@@ -34,26 +34,27 @@ function App() {
           gap: "1rem",
         }}
       >
-        {typeof backendData.games === "undefined" ? (
+        {typeof backendData === "undefined" ? (
           <p>Loading...</p>
         ) : (
-          backendData.games.map((game, i) => (
+          backendData.games.map((game: Game, i: number) => (
             <div
               key={i}
               className="card"
               style={{
+                minWidth: "300px",
                 display: "flex",
+                flexDirection: "column",
                 backgroundColor: "rgb(255, 255, 255)",
                 borderRadius: ".5rem",
               }}
             >
               <div
                 style={{
-                  paddingTop: "1rem",
-                  paddingBottom: "1rem",
+                  padding: "1rem",
                   display: "flex",
                   justifyContent: "center",
-                  width: "100%",
+                  width: "auto",
                 }}
               >
                 <div
@@ -120,8 +121,8 @@ function App() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "10px",
-                  width: "95%",
+                  padding: "1em",
+                  width: "auto",
                 }}
               >
                 <div
