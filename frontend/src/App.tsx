@@ -14,24 +14,23 @@ function App() {
 
   return (
     <div
+      className="container"
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        gap: "2rem",
-        padding: "1rem",
-        margin: "0 auto",
-        backgroundColor: "rgb(246, 246, 246)",
-        width: "100vw",
+        gap: "1rem",
+        paddingTop: ".5rem",
+        paddingRight: "4rem",
+        paddingLeft: "4rem",
       }}
     >
-      <h1>Today's Games</h1>
+      <h1 style={{ textAlign: "center" }}>Today's Games</h1>
       <div
         className="grid-container"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(370px, 1fr))",
-          gap: "1rem",
+          gap: "1.5rem",
         }}
       >
         {typeof backendData === "undefined" ? (
